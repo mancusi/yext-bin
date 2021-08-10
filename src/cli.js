@@ -2,7 +2,10 @@
 "use strict";
 
 import { spawn } from "child_process";
-import yext from "../index.js";
+import binPromise from "../index.js";
 
-const input = process.argv.slice(2);
-spawn(yext, input, { stdio: "inherit" }).on("exit", process.exit);
+(async function () {
+  const bin = await binPromise;
+  const input = process.argv.slice(2);
+  spawn(bin, input, { stdio: "inherit" }).on("exit", process.exit);
+})();

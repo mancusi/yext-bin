@@ -1,4 +1,4 @@
 "use strict";
-const bin = await import("./src/setup/bin.js");
+const bin = import("./src/setup/bin.js");
 
-export default bin.default(process.cwd()).path();
+export default bin.then((b) => b.default(process.cwd()).path());
